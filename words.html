@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Learn Words - SignBridge</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .word-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .word-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .word-video {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .detection-area {
+      background: #f5f5f5;
+      border: 2px dashed #ddd;
+      border-radius: 12px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 15px 0;
+    }
+
+    .score-display {
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .category-section {
+      margin-bottom: 60px;
+    }
+
+    .progress-bar {
+      height: 20px;
+      border-radius: 10px;
+    }
+
+    .word-card.completed {
+      border: 2px solid rgba(40, 167, 69, 0.25);
+    }
+
+    .score-display.completed {
+      background: #28a745;
+      color: white;
+    }
+
+    .search-input {
+      border-radius: 50px;
+      padding: 12px 20px;
+      border: 2px solid #ddd;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .category-tab {
+      background: #f8f9fa;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .category-tab.active {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .category-content {
+      display: none;
+    }
+
+    .category-content.active {
+      display: block;
+    }
+
+    .not-found-message {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+      font-size: 18px;
+      display: none;
+    }
+
+    .not-found-message.show {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/favicon.png" alt=""> <h1 class="sitename">SignBridge</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="learn.html" class="active">
+              <span>Learn</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i>
+            </a>
+
+            <ul>
+              <li><a href="alphabet.html">Alphabet</a></li>
+              <li><a href="words.html" class="active"> Words</a></li>
+              <li><a href="quiz.html"> Quiz </a></li>
+
+            </ul>
+          </li>
+
+          <li><a href="translate.html"> Translator </a></li>
+
+          <li><a href="progress.html">Progress</a></li>
+
+          <li><a href="signup.html">Sign Up</a></li>
+
+        </ul>
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background">
+
+    <div id="hero-carousel" data-bs-interval="5000"
+         class="container carousel carousel-fade"
+         data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+
+          <h2 class="animate__animated animate__fadeInDown">
+            Learn Sign Language <span>Words</span>
+          </h2>
+
+          <p class="animate__animated animate__fadeInUp">
+            Master sign language through interactive videos, practice detection, and track your progress.
+          </p>
+
+          <a href="#search-section"
+             class="btn-get-started animate__animated animate__fadeInUp scrollto">
+            Start Learning
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+
+          <h2 class="animate__animated animate__fadeInDown">
+            Practice with <span>Real-time Detection</span>
+          </h2>
+
+          <p class="animate__animated animate__fadeInUp">
+            Use your camera to practice signs and get instant feedback on your accuracy.
+          </p>
+
+          <a href="#progress-section"
+             class="btn-get-started animate__animated animate__fadeInUp scrollto">
+            View Progress
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="carousel-container">
+
+          <h2 class="animate__animated animate__fadeInDown">
+            Master <span>Essential Vocabulary</span>
+          </h2>
+
+          <p class="animate__animated animate__fadeInUp">
+            Learn greetings, emotions, actions, and concepts through comprehensive sign language education.
+          </p>
+
+          <a href="#words-section"
+             class="btn-get-started animate__animated animate__fadeInUp scrollto">
+            Browse Words
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="carousel-control-prev"
+         href="#hero-carousel"
+         role="button"
+         data-bs-slide="prev">
+
+        <span class="carousel-control-prev-icon bi bi-chevron-left"></span>
+
+      </a>
+
+      <a class="carousel-control-next"
+         href="#hero-carousel"
+         role="button"
+         data-bs-slide="next">
+
+        <span class="carousel-control-next-icon bi bi-chevron-right"></span>
+
+      </a>
+
+    </div>
+
+    <!-- Waves -->
+    <svg class="hero-waves"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         viewBox="0 24 150 28 "
+         preserveAspectRatio="none">
+
+      <defs>
+        <path id="wave-path"
+              d="M-160 44c30 0 58-18 88-18s
+              58 18 88 18 58-18 88-18
+              58 18 88 18 v44h-352z">
+        </path>
+      </defs>
+
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3"></use>
+      </g>
+
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0"></use>
+      </g>
+
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9"></use>
+      </g>
+
+    </svg>
+
+  </section>
+  <!-- /Hero Section -->
+
+  <!-- SEARCH SECTION -->
+  <section id="search-section" class="section">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-6 text-center" data-aos="fade-up">
+
+          <h3>Search for Words</h3>
+
+          <p>Find specific words to learn or browse by category</p>
+
+          <input type="text" id="search-input" class="search-input" placeholder="Search words...">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROGRESS SECTION -->
+  <section id="progress-section" class="section light-background">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+
+          <h3>Your Learning Progress</h3>
+
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+
+          <p><strong>25%</strong> Complete - <span id="learned-count">12</span> of <span id="total-count">48</span> words learned</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- WORDS CATEGORIES -->
+  <section id="words-section" class="section">
+
+    <div class="container">
+
+      <div class="category-tabs" data-aos="fade-up">
+        <button class="category-tab active" data-category="greetings">Greetings & Basic Communication</button>
+        <button class="category-tab" data-category="actions">  Actions (Daily Verbs)</button>
+        <button class="category-tab" data-category="education">  Education / Objects / Concepts</button>
+        <button class="category-tab" data-category="emotions">  Emotions</button>
+      </div>
+
+      <!-- GREETINGS & BASIC COMMUNICATION -->
+      <div id="greetings" class="category-content active" data-aos="fade-up">
+
+        <div class="category-section">
+
+          <h3 class="text-center mb-4">Greetings & Basic Communication</h3>
+          <div class="not-found-message">This word is not exist or can't be found</div>
+
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Hello</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/hello.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 85%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Bye</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/bye.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 92%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Yes</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/yes.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 78%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>No</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/no.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 88%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>What</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/what.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Who</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/who.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Name</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/name.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Meet</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/meet.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Now</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/now.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>How</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/how.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4> Good </h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/good.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>You</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/you.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>My</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/my.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ACTIONS (DAILY VERBS) -->
+      <div id="actions" class="category-content">
+
+        <div class="category-section">
+
+          <h3 class="text-center mb-4">🟡 Actions (Daily Verbs)</h3>
+          <div class="not-found-message">This word is not exist or can't be found</div>
+
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Come</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/come.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4> Drink </h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/drink.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Eat</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/eat.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Give</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/give.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Want</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/want.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Help</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/help.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Stop</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/stop.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- EDUCATION / OBJECTS / CONCEPTS -->
+      <div id="education" class="category-content">
+
+        <div class="category-section">
+
+          <h3 class="text-center mb-4">🔵 Education / Objects / Concepts</h3>
+          <div class="not-found-message">This word is not exist or can't be found</div>
+
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Computer</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/computer.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Major</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/major.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Science</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/science.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Phone</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/phone.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4> Graduate </h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/graduate.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- EMOTIONS (AS REQUESTED BY DOCTOR) -->
+      <div id="emotions" class="category-content">
+
+        <div class="category-section">
+
+          <h3 class="text-center mb-4">🔴 Emotions (as requested by doctor)</h3>
+          <div class="not-found-message">This word is not exist or can't be found</div>
+
+          <div class="row">
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Happy</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/happy.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4> Nice </h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/nice.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Angry</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/angry.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Love</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/love.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+              <div class="word-card">
+                <h4>Tired</h4>
+                <video class="word-video" controls>
+                  <source src="assets/videos/words/tired.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+                <div class="detection-area">
+                  <i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i>
+                  <span>Detection Area</span>
+                  <button class="btn btn-primary mt-2">Start Practice</button>
+                </div>
+                <div class="score-display">Accuracy: 0%</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer dark-background">
+
+    <div class="container text-center">
+
+      <h3>SignBridge</h3>
+
+      <p>
+        Breaking barriers. Building understanding. Connecting people.
+      </p>
+
+      <div class="social-links d-flex justify-content-center">
+
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+
+      </div>
+
+      <div class="mt-3">
+        <small>© 2026 SignBridge. All Rights Reserved.</small>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Main JS -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    AOS.init();
+
+    // Category tabs functionality
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const categoryContents = document.querySelectorAll('.category-content');
+
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        // Add active class to clicked tab
+        tab.classList.add('active');
+
+        // Hide all category contents
+        categoryContents.forEach(content => content.classList.remove('active'));
+        // Show the corresponding category content
+        const category = tab.getAttribute('data-category');
+        document.getElementById(category).classList.add('active');
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    const wordCards = document.querySelectorAll('.word-card');
+    const categorySections = document.querySelectorAll('.category-section');
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const categoryContents = document.querySelectorAll('.category-content');
+
+      if (searchTerm === '') {
+        // If search is empty, restore tab-based view
+        categoryContents.forEach(content => content.classList.remove('active'));
+        categoryTabs.forEach(tab => tab.classList.remove('active'));
+        
+        // Activate first tab by default
+        if (categoryTabs.length > 0) {
+          categoryTabs[0].classList.add('active');
+          categoryContents[0].classList.add('active');
+        }
+        
+        // Show all cards and hide not-found messages
+        wordCards.forEach(card => {
+          card.style.display = 'block';
+        });
+        document.querySelectorAll('.not-found-message').forEach(msg => {
+          msg.classList.remove('show');
+        });
+      } else {
+        // Show all category containers
+        categoryContents.forEach(content => content.classList.add('active'));
+        
+        // Track found words per category
+        categorySections.forEach(section => {
+          const cardsInSection = section.querySelectorAll('.word-card');
+          let foundCount = 0;
+          
+          cardsInSection.forEach(card => {
+            const wordTitle = card.querySelector('h4').textContent.toLowerCase();
+            if (wordTitle.includes(searchTerm)) {
+              card.style.display = 'block';
+              foundCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+          
+          // Show not-found message if no words match in this category
+          const notFoundMsg = section.querySelector('.not-found-message');
+          if (foundCount === 0) {
+            notFoundMsg.classList.add('show');
+          } else {
+            notFoundMsg.classList.remove('show');
+          }
+        });
+      }
+    });
+
+    const PROGRESS_KEY = 'signbridge_words_progress';
+    const ACCURACY_KEY = 'signbridge_words_accuracy';
+
+    function normalizeWord(word) {
+      return word?.trim().toLowerCase() || '';
+    }
+
+    // In-memory cache for this page; reset on load
+    let completedWordsCache = [];
+    let wordAccuraciesCache = {};
+
+    function loadCompletedWords() {
+      return completedWordsCache.slice();
+    }
+
+    function loadWordAccuracies() {
+      return Object.assign({}, wordAccuraciesCache);
+    }
+
+    function updateProgress() {
+      const wordCards = Array.from(document.querySelectorAll('.word-card'));
+      const completedWords = loadCompletedWords();
+      const accuracies = loadWordAccuracies();
+      let learnedWords = 0;
+
+      wordCards.forEach(card => {
+        const word = card.querySelector('h4')?.textContent.trim();
+        const scoreDisplay = card.querySelector('.score-display');
+        const normalizedWord = normalizeWord(word);
+        const savedAccuracy = accuracies[normalizedWord];
+
+        const isCompleted = completedWords.includes(normalizedWord);
+        if (isCompleted) {
+          learnedWords += 1;
+          card.classList.add('completed');
+          if (scoreDisplay) {
+            scoreDisplay.classList.add('completed');
+            if (savedAccuracy !== undefined && savedAccuracy !== null) {
+              scoreDisplay.textContent = `Completed (${savedAccuracy}%)`;
+            } else if (completedWords.includes(normalizedWord) && !scoreDisplay.textContent.toLowerCase().includes('completed')) {
+              scoreDisplay.textContent = 'Completed';
+            }
+          }
+        } else {
+          card.classList.remove('completed');
+          scoreDisplay?.classList.remove('completed');
+        }
+      });
+
+      const totalWords = wordCards.length;
+      const progressPercentage = totalWords ? Math.round((learnedWords / totalWords) * 100) : 0;
+      const progressBar = document.querySelector('.progress-bar');
+      if (progressBar) {
+        progressBar.style.width = progressPercentage + '%';
+      }
+      document.getElementById('learned-count').textContent = learnedWords;
+      document.getElementById('total-count').textContent = totalWords;
+    }
+
+    document.querySelectorAll('.word-card button.btn-primary').forEach(button => {
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        const wordCard = button.closest('.word-card');
+        const word = wordCard?.querySelector('h4')?.textContent.trim();
+        if (word) {
+          window.location.href = `realtime_words.html?word=${encodeURIComponent(word)}`;
+        }
+      });
+    });
+
+    // Initialize progress: reset in-memory state and load backend for authenticated users only
+    (function initProgress() {
+      completedWordsCache = [];
+      wordAccuraciesCache = {};
+      const token = localStorage.getItem('auth_token');
+      if (token && window.getUserProgress) {
+        window.getUserProgress().then(p => {
+          if (p && Array.isArray(p.completed_words)) completedWordsCache = p.completed_words.slice();
+          if (p && p.practiceAccuracy && typeof p.practiceAccuracy === 'object') wordAccuraciesCache = Object.assign({}, p.practiceAccuracy);
+        }).catch(() => {}).finally(() => updateProgress());
+      } else {
+        // guests: keep empty state
+        updateProgress();
+      }
+    })();
+  </script>
+
+	<script src="./assets/js/navbar-auth.js"></script>
+	<script src="./assets/js/api-auth.js"></script>
+</body>
+</html>

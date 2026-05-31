@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Progress - SignBridge</title>
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="progress.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename"> <img src="assets/img/favicon.png" alt="">  SignBridge</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="learn.html">
+              <span>Learn</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i>
+            </a>
+            <ul>
+              <li><a href="alphabet.html"> Alphabet</a></li>
+              <li><a href="words.html"> Words</a></li>
+              <li><a href="quiz.html"> Quiz </a></li>
+            </ul>
+          </li>
+          <li><a href="translate.html"> Translator </a></li>
+          <li><a href="progress.html" class="active">Progress</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero section dark-background">
+    <div id="hero-carousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Your Learning <span>Progress</span></h2>
+          <p class="animate__animated animate__fadeInUp">Track your improvement across alphabet practice, quizzes, and translation sessions with a modern dashboard built for consistent growth.</p>
+          <a href="#overview" class="btn-get-started animate__animated animate__fadeInUp scrollto">View Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3"></use></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0"></use></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9"></use></g>
+    </svg>
+  </section>
+
+  <main id="main">
+    <section id="overview" class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+          <h2>Overview Stats</h2>
+          <p>Track your total learning progress, session count, and accuracy performance.</p>
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-sm-6 col-xl-4">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="bg-light rounded-4 p-3 text-primary"><i class="bi bi-book-half fs-4"></i></div>
+                <span class="text-success"><i class="bi bi-arrow-up-right"></i> +12%</span>
+              </div>
+              <h5>Total Alphabet Letters Learned</h5>
+              <h2 id="stat-letters" class="mt-3">0</h2>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-4">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="bg-light rounded-4 p-3 text-secondary"><i class="bi bi-braces fs-4"></i></div>
+                <span class="text-success"><i class="bi bi-arrow-up-right"></i> +9%</span>
+              </div>
+              <h5>Total Words Learned</h5>
+              <h2 id="stat-words" class="mt-3">0</h2>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-4">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="bg-light rounded-4 p-3 text-success"><i class="bi bi-percent fs-4"></i></div>
+                <span class="text-success"><i class="bi bi-arrow-up-right"></i> +7%</span>
+              </div>
+              <h5>Average Accuracy</h5>
+              <h2 id="stat-accuracy" class="mt-3">0%</h2>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-4">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="bg-light rounded-4 p-3 text-warning"><i class="bi bi-clock-history fs-4"></i></div>
+                <span class="text-success"><i class="bi bi-arrow-up-right"></i> +15%</span>
+              </div>
+              <h5>Practice Sessions Completed</h5>
+              <h2 id="stat-practice" class="mt-3">0</h2>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-xl-4">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="bg-light rounded-4 p-3 text-info"><i class="bi bi-arrow-repeat fs-4"></i></div>
+                <span class="text-success"><i class="bi bi-arrow-up-right"></i> +18%</span>
+              </div>
+              <h5>Translation Sessions</h5>
+              <h2 id="stat-translator" class="mt-3">0</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-background">
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                  <h5>Alphabet Progress</h5>
+                  <small class="text-muted">Letters mastered out of 26</small>
+                </div>
+                <span id="progress-alphabet-label">0%</span>
+              </div>
+              <div class="progress mb-4">
+                <div id="progress-alphabet" class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                  <h5>Words Progress</h5>
+                  <small class="text-muted">Lessons completed in vocabulary track</small>
+                </div>
+                <span id="progress-words-label">0%</span>
+              </div>
+              <div class="progress mb-0">
+                <div id="progress-words" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                  <h5>Quiz Completion</h5>
+                  <small class="text-muted">Quizzes completed from your study plan</small>
+                </div>
+                <span id="progress-quiz-label">0%</span>
+              </div>
+              <div class="progress mb-4">
+                <div id="progress-quiz" class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div>
+                  <h5>Translator Usage</h5>
+                  <small class="text-muted">Active translation sessions</small>
+                </div>
+                <span id="progress-translator-label">0%</span>
+              </div>
+              <div class="progress mb-0">
+                <div id="progress-translator" class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4">
+          <div class="col-xl-5">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                  <h5>Recent Activity</h5>
+                  <p class="text-muted mb-0">What you did last</p>
+                </div>
+                <span class="badge rounded-pill bg-secondary">Live update</span>
+              </div>
+
+              <ul id="activity-feed" class="list-group list-group-flush mb-0"></ul>
+            </div>
+          </div>
+
+          <div class="col-xl-7">
+            <div class="card rounded-4 shadow-sm h-100 p-4">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                  <h5>Performance Chart</h5>
+                  <p class="text-muted mb-0">Weekly practice & accuracy</p>
+                </div>
+                <span class="text-muted">Updated by your activity</span>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="performanceChart" width="600" height="360"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light-background">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+          <h2>Achievements</h2>
+          <p>Track the milestones you unlocked along your SignBridge journey.</p>
+        </div>
+
+        <div class="row gy-4 services">
+          <div class="col-sm-6 col-lg-3">
+            <div class="service-item position-relative text-center">
+              <div class="icon text-primary"><i class="bi bi-rocket-fill"></i></div>
+              <h3>Beginner</h3>
+              <p>Completed your first alphabet practice sessions.</p>
+              <span id="achievement-beginner" class="badge bg-success">Unlocked</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="service-item position-relative text-center">
+              <div class="icon text-success"><i class="bi bi-lightning-fill"></i></div>
+              <h3>Fast Learner</h3>
+              <p>Improved your accuracy quickly while practicing words.</p>
+              <span id="achievement-fastlearner" class="badge bg-secondary">Locked</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="service-item position-relative text-center">
+              <div class="icon text-warning"><i class="bi bi-trophy-fill"></i></div>
+              <h3>Quiz Master</h3>
+              <p>Showed consistency on quizzes and accuracy goal.</p>
+              <span id="achievement-quizmaster" class="badge bg-secondary">Locked</span>
+            </div>
+          </div>
+          <div class="col-sm-6 col-lg-3">
+            <div class="service-item position-relative text-center">
+              <div class="icon text-info"><i class="bi bi-arrow-repeat"></i></div>
+              <h3>Translator Expert</h3>
+              <p>Used the translator enough times to build confidence.</p>
+              <span id="achievement-translator" class="badge bg-secondary">Locked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer dark-background">
+    <div class="container text-center">
+      <h3>SignBridge</h3>
+      <p>Breaking barriers. Building understanding. Connecting people.</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="mt-3"><small>© 2026 SignBridge. All Rights Reserved.</small></div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="progress.js"></script>
+	<script src="./assets/js/navbar-auth.js"></script>
+	<script src="./assets/js/api-auth.js"></script>
+</body>
+
+</html>

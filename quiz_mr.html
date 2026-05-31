@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Quiz M–R - SignBridge</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .quiz-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .camera-frame {
+      border-radius: 24px;
+      overflow: hidden;
+      min-height: 320px;
+      background: #000;
+    }
+
+    #camera-preview {
+      width: 100%;
+      transform: scaleX(-1);
+      object-fit: cover;
+      min-height: 320px;
+    }
+
+    .metric-box {
+      background: #f5f8ff;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .feedback-pill {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .feedback-pill.success {
+      color: #155724;
+      background: rgba(40, 167, 69, 0.12);
+    }
+
+    .feedback-pill.warning {
+      color: #856404;
+      background: rgba(255, 193, 7, 0.12);
+    }
+
+    .feedback-pill.danger {
+      color: #721c24;
+      background: rgba(220, 53, 69, 0.12);
+    }
+
+    .letter-badge {
+      font-size: 72px;
+      font-weight: 800;
+      color: var(--accent-color);
+    }
+
+    .control-buttons .btn {
+      min-width: 140px;
+    }
+  </style>
+</head>
+
+<body data-group="mr" data-group-label="M–R">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename"> <img src="assets/img/favicon.png" alt="">  SignBridge</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="learn.html"><span>Learn</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="alphabet.html"> Alphabet</a></li>
+              <li><a href="words.html"> Words</a></li>
+              <li><a href="quiz.html"> Quiz </a></li>
+            </ul>
+          </li>
+          <li><a href="translate.html"> Translator </a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero section dark-background" style="padding-top: 120px;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7" data-aos="fade-up">
+          <h1>Alphabet Quiz M–R</h1>
+          <p>Test your alphabet knowledge with a short group quiz. Perform the letter shown and get instant feedback.</p>
+        </div>
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="quiz-card text-center">
+            <h3 id="group-label">M–R</h3>
+            <p>Get ready for a real-time quiz that rewards consistent performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3"></use></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0"></use></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9"></use></g>
+    </svg>
+  </section>
+
+  <main class="section">
+    <div class="container" data-aos="fade-up">
+      <div class="quiz-card">
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+              <div>
+                <p class="text-uppercase text-muted mb-1">Quiz target</p>
+                <div class="letter-badge" id="question-letter">M</div>
+              </div>
+              <div class="text-end">
+                <p class="text-uppercase text-muted mb-1">Timer</p>
+                <div class="letter-badge" style="font-size: 42px;"> <span id="timer-value">15s</span></div>
+              </div>
+            </div>
+
+            <div class="camera-frame mb-3">
+              <video id="camera-preview" playsinline autoplay muted></video>
+            </div>
+
+            <div class="d-flex gap-3 flex-wrap">
+              <span class="status-chip bg-light text-dark" id="session-state">Stopped</span>
+              <span class="status-chip bg-light text-dark" id="question-status">Ready</span>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="metric-box">
+              <span class="metric-label">Question</span>
+              <div id="question-progress">Question 1 of 6</div>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Question score</span>
+              <div class="metric-value" id="question-score">0 / 100</div>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Overall score</span>
+              <div class="metric-value" id="overall-score">0 / 600</div>
+            </div>
+
+            <div class="mb-4">
+              <span class="feedback-pill warning" id="feedback-pill">Press Start to begin</span>
+            </div>
+
+            <div class="control-buttons d-flex flex-wrap gap-3">
+              <button id="start-quiz" class="btn btn-primary">Start Quiz</button>
+              <button id="next-question" class="btn btn-outline-secondary">Next letter</button>
+              <button id="stop-quiz" class="btn btn-outline-danger">Stop</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-card mt-4 d-none" id="summary-panel">
+        <h4>Quiz Results</h4>
+        <p id="summary-text">You completed the quiz.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container text-center">
+      <h3>SignBridge</h3>
+      <p>Breaking barriers. Building understanding. Connecting people.</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="mt-3"><small>© 2026 SignBridge. All Rights Reserved.</small></div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="alphabet_quiz.js"></script>
+</body>
+</html>

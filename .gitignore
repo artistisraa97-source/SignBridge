@@ -1,0 +1,43 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode/
+
+# Virtual environment
+signai_env_v2/
+
+# Datasets
+dataset/
+data/
+asl_alphabet_train/
+
+# Training outputs
+cnn_lstm_output/
+debug/
+profiler/
+
+# Models
+*.h5
+*.keras
+*.npy
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Videos
+assets/videos/
+
+# Databases
+*.db
+
+# Logs
+*.log
+
+# ML files
+*.pkl
+
+# CSV datasets
+asl_landmarks.csv

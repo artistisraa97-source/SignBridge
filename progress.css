@@ -1,0 +1,31 @@
+..chart-wrapper {
+  min-height: 360px;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+}
+
+.section.light-background {
+  background-color: var(--background-color);
+}
+
+.card.rounded-4 {
+  border-color: rgba(239, 102, 3, 0.12);
+  background-color: var(--surface-color);
+}
+
+.services .service-item .icon i {
+  color: var(--accent-color);
+}
+
+.service-item h3,
+.service-item p,
+.section-title p {
+  color: var(--default-color);
+}
+
+.section-title p {
+  color: var(--heading-color);
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<title>Sign Up - SignBridge</title>
+
+	<!-- Favicons -->
+	<link href="assets/img/favicon.png" rel="icon">
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com" rel="preconnect">
+	<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+	<!-- Vendor CSS -->
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+	<!-- Main CSS -->
+	<link href="assets/css/main.css" rel="stylesheet">
+
+	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<!-- Header -->
+	<header id="header" class="header d-flex align-items-center fixed-top">
+		<div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+			<a href="index.html" class="logo d-flex align-items-center">
+				<img src="assets/img/favicon.png" alt=""><h1 class="sitename">SignBridge</h1>
+			</a>
+			<nav id="navmenu" class="navmenu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="dropdown">
+						<a href="learn.html">
+							<span>Learn</span>
+							<i class="bi bi-chevron-down toggle-dropdown"></i>
+						</a>
+						<ul>
+							<li><a href="alphabet.html">Alphabet</a></li>
+							<li><a href="words.html"> Words</a></li>
+							<li><a href="quiz.html"> Quiz </a></li>
+						</ul>
+					</li>
+					<li><a href="translate.html"> Translator </a></li>
+					<li><a href="progress.html">Progress</a></li>
+					<li><a href="signup.html" class="active">Sign Up</a></li>
+				</ul>
+				<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+			</nav>
+		</div>
+	</header>
+
+	<!-- Main Content -->
+	<main>
+		<div class="container" id="container">
+			<div class="form-container sign-up-container">
+				<form action="#">
+					<h1>Create Account</h1>
+					<div id="auth-message"></div>
+					<input id="signup-first-name" type="text" placeholder="First Name" />
+					<input id="signup-last-name" type="text" placeholder="Last Name" />
+					<input id="signup-email" type="email" placeholder="Email" />
+					<input id="signup-password" type="password" placeholder="Password" />
+					<input id="signup-confirm-password" type="password" placeholder="Confirm Password" />
+					<button type="button" id="signup-button">Sign Up</button>
+				</form>
+			</div>
+			<!-- Verification Panel: appears in place of Sign Up after successful signup -->
+			<div class="form-container sign-up-container verify-container" style="display:none;">
+				<form action="#">
+					<h1>Verify Email</h1>
+					<div id="verify-message"></div>
+					<input id="verify-email" type="email" placeholder="Email" />
+					<input id="verify-code" type="text" placeholder="6-digit Code" maxlength="6" />
+					<div class="button-group">
+						<button type="button" id="verify-button">Verify</button>
+						<button type="button" id="resend-button" class="ghost">Resend</button>
+					</div>
+				</form>
+			</div>
+			<div class="form-container sign-in-container">
+				<form action="#">
+					<h1>Sign in</h1>
+					<div class="social-container">
+					</div>
+					<div id="auth-message-login"></div>
+					<input id="login-email" type="email" placeholder="Email" />
+					<input id="login-password" type="password" placeholder="Password" />
+					<a href="#">Forgot your password?</a>
+					<button type="button" id="login-button">Sign In</button>
+				</form>
+			</div>
+			
+			<div class="overlay-container">
+				<div class="overlay">
+					<div class="overlay-panel overlay-left">
+						<h1>Welcome Back!</h1>
+						<p>To keep connected with us please login with your personal info</p>
+						<button class="ghost" id="signIn">Sign In</button>
+					</div>
+					<div class="overlay-panel overlay-right">
+						<h1>Hello, Friend!</h1>
+						<p>Enter your personal details and start journey with us</p>
+						<button class="ghost" id="signUp">Sign Up</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer id="footer" class="footer dark-background">
+		<div class="container text-center">
+			<h3>SignBridge</h3>
+			<p>Breaking barriers. Building understanding. Connecting people.</p>
+			<div class="social-links d-flex justify-content-center">
+				<a href="#"><i class="bi bi-facebook"></i></a>
+				<a href="#"><i class="bi bi-instagram"></i></a>
+				<a href="#"><i class="bi bi-twitter-x"></i></a>
+				<a href="#"><i class="bi bi-linkedin"></i></a>
+			</div>
+			<div class="mt-3">
+				<small>© 2026 SignBridge. All Rights Reserved.</small>
+			</div>
+		</div>
+	</footer>
+
+	<!-- Scroll Top -->
+	<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+		<i class="bi bi-arrow-up-short"></i>
+	</a>
+
+	<!-- Preloader -->
+	<div id="preloader"></div>
+
+	<!-- Vendor JS -->
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/vendor/aos/aos.js"></script>
+
+	<!-- Main JS -->
+	<script src="assets/js/main.js"></script>
+
+	<script>
+		AOS.init();
+	</script>
+
+	<script>
+		function showMessage(containerId, message, type = 'info') {
+			const container = document.getElementById(containerId);
+			if (!container) return;
+			container.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`;
+		}
+
+		function clearMessage(containerId) {
+			const container = document.getElementById(containerId);
+			if (container) container.innerHTML = '';
+		}
+
+		function validateEmail(email) {
+			const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+			return re.test(email);
+		}
+
+			async function handleSignup(e) {
+				e.preventDefault();
+				const firstName = document.getElementById('signup-first-name').value.trim();
+				const lastName = document.getElementById('signup-last-name').value.trim();
+				const email = document.getElementById('signup-email').value.trim();
+				const password = document.getElementById('signup-password').value;
+				const confirmPassword = document.getElementById('signup-confirm-password').value;
+				const btn = document.getElementById('signup-button');
+				clearMessage('auth-message');
+
+				if (!firstName || !lastName || !email || !password || !confirmPassword) {
+					showMessage('auth-message', 'Please fill in all required fields.', 'warning');
+					return;
+				}
+				if (!validateEmail(email)) {
+					showMessage('auth-message', 'Please enter a valid email address.', 'warning');
+					return;
+				}
+				if (password.length < 8) {
+					showMessage('auth-message', 'Password must be at least 8 characters long.', 'warning');
+					return;
+				}
+				if (password !== confirmPassword) {
+					showMessage('auth-message', 'Passwords do not match.', 'warning');
+					return;
+				}
+
+				btn.disabled = true;
+				btn.textContent = 'Signing up...';
+				try {
+					const res = await fetch('/auth/signup', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							first_name: firstName,
+							last_name: lastName,
+							email,
+							password,
+							confirm_password: confirmPassword,
+						})
+					});
+					const data = await res.json();
+					if (res.ok) {
+						showMessage('auth-message', data.message || 'Account created successfully. Check your email for the verification code.', 'success');
+						btn.textContent = 'Signed Up';
+						// Hide only the original sign-up area and show the verification panel in the same place
+						const signupContainer = document.querySelector('.sign-up-container:not(.verify-container)');
+						const verifyContainer = document.querySelector('.verify-container');
+						if (signupContainer) {
+							signupContainer.style.display = 'none';
+							signupContainer.style.visibility = 'hidden';
+						}
+						if (verifyContainer) {
+							verifyContainer.style.display = 'flex';
+							verifyContainer.style.visibility = 'visible';
+							verifyContainer.style.zIndex = '5';
+							const ve = document.getElementById('verify-email');
+							if (ve) ve.value = email;
+						}
+					} else {
+						showMessage('auth-message', data.detail || data.message || 'Signup failed.', 'danger');
+					}
+				} catch (error) {
+					showMessage('auth-message', 'Server error: unable to complete signup.', 'danger');
+				} finally {
+					btn.disabled = false;
+					btn.textContent = 'Sign Up';
+				}
+			}
+
+			async function handleLogin(e) {
+				e.preventDefault();
+				const email = document.getElementById('login-email').value.trim();
+				const password = document.getElementById('login-password').value;
+				const btn = document.getElementById('login-button');
+				clearMessage('auth-message-login');
+
+				if (!email || !password) {
+					showMessage('auth-message-login', 'Please enter your email and password.', 'warning');
+					return;
+				}
+				if (!validateEmail(email)) {
+					showMessage('auth-message-login', 'Please enter a valid email address.', 'warning');
+					return;
+				}
+
+				btn.disabled = true;
+				btn.textContent = 'Signing in...';
+				try {
+					const res = await fetch('/auth/login', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ email, password })
+					});
+					const data = await res.json();
+					if (res.ok && data.success && data.token) {
+					localStorage.setItem('auth_token', data.token);
+					if (data.email) localStorage.setItem('user_email', data.email);
+					if (window.updateNavbarAuth) window.updateNavbarAuth();
+					showMessage('auth-message-login', 'Signed in successfully.', 'success');
+						} else {
+						showMessage('auth-message-login', data.detail || data.message || 'Invalid credentials.', 'danger');
+					}
+				} catch (error) {
+					showMessage('auth-message-login', 'Server error: unable to sign in.', 'danger');
+				} finally {
+					btn.disabled = false;
+					btn.textContent = 'Sign In';
+				}
+			}
+
+			async function handleVerify(e) {
+				e.preventDefault();
+				const email = document.getElementById('verify-email').value.trim();
+				const code = document.getElementById('verify-code').value.trim();
+				clearMessage('verify-message');
+				if (!validateEmail(email) || code.length !== 6) {
+					showMessage('verify-message', 'Please enter a valid email and 6-digit code.', 'warning');
+					return;
+				}
+				const btn = document.getElementById('verify-button');
+				btn.disabled = true; btn.textContent = 'Verifying...';
+				try {
+					const res = await fetch('/auth/verify', {
+						method: 'POST', headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ email, code })
+					});
+					const data = await res.json();
+					if (res.ok) {
+						showMessage('verify-message', data.message || 'Email verified.', 'success');
+						// Hide verification panel and trigger existing Sign In transition
+						setTimeout(() => {
+							const verifyContainer = document.querySelector('.verify-container');
+							if (verifyContainer) {
+								verifyContainer.style.display = 'none';
+								verifyContainer.style.visibility = 'hidden';
+							}
+							const signInBtn = document.getElementById('signIn');
+							if (signInBtn) signInBtn.click();
+						}, 600);
+					} else {
+						showMessage('verify-message', data.detail || data.message || 'Verification failed.', 'danger');
+					}
+				} catch (err) {
+					showMessage('verify-message', 'Server error: unable to verify.', 'danger');
+				} finally { btn.disabled = false; btn.textContent = 'Verify'; }
+			}
+
+			async function handleResend(e) {
+				e.preventDefault();
+				const email = document.getElementById('verify-email').value.trim();
+				clearMessage('verify-message');
+				if (!validateEmail(email)) { showMessage('verify-message', 'Please enter a valid email.', 'warning'); return; }
+				const btn = document.getElementById('resend-button');
+				btn.disabled = true; btn.textContent = 'Sending...';
+				try {
+					const res = await fetch('/auth/resend-code', {
+						method: 'POST', headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ email })
+					});
+					const data = await res.json();
+					if (res.ok) showMessage('verify-message', data.message || 'Code resent.', 'success');
+					else showMessage('verify-message', data.detail || data.message || 'Failed to resend.', 'danger');
+				} catch (err) {
+					showMessage('verify-message', 'Server error: unable to resend code.', 'danger');
+				} finally { btn.disabled = false; btn.textContent = 'Resend Code'; }
+			}
+
+			document.addEventListener('DOMContentLoaded', () => {
+				const signupForm = document.querySelector('.sign-up-container form');
+				const loginForm = document.querySelector('.sign-in-container form');
+				const signupBtn = document.getElementById('signup-button');
+				const loginBtn = document.getElementById('login-button');
+				const verifyBtn = document.getElementById('verify-button');
+				const resendBtn = document.getElementById('resend-button');
+				if (signupForm) signupForm.addEventListener('submit', handleSignup);
+				if (loginForm) loginForm.addEventListener('submit', handleLogin);
+				if (signupBtn) signupBtn.addEventListener('click', handleSignup);
+				if (loginBtn) loginBtn.addEventListener('click', handleLogin);
+				if (verifyBtn) verifyBtn.addEventListener('click', handleVerify);
+				if (resendBtn) resendBtn.addEventListener('click', handleResend);
+
+			});
+	</script>
+
+	<script src="./assets/js/navbar-auth.js"></script>
+	<script src="./assets/js/api-auth.js"></script>
+	<script src="./script.js"></script>
+</body>
+
+</html>

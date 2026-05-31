@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Learn Alphabet - SignBridge</title>
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .word-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      transition: 0.3s;
+    }
+
+    .word-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .word-video {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .detection-area {
+      background: #f5f5f5;
+      border: 2px dashed #ddd;
+      border-radius: 12px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 15px 0;
+    }
+
+    .score-display {
+      background: var(--accent-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .category-section {
+      margin-bottom: 60px;
+    }
+
+    .progress-bar {
+      height: 20px;
+      border-radius: 10px;
+    }
+
+    .word-card.completed {
+      border: 2px solid rgba(40, 167, 69, 0.25);
+    }
+
+    .score-display.completed {
+      background: #28a745;
+      color: white;
+    }
+
+    .search-input {
+      border-radius: 50px;
+      padding: 12px 20px;
+      border: 2px solid #ddd;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .category-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .category-tab {
+      background: #f8f9fa;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .category-tab.active {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .category-content {
+      display: none;
+    }
+
+    .category-content.active {
+      display: block;
+    }
+
+    .not-found-message {
+      text-align: center;
+      padding: 40px 20px;
+      color: #999;
+      font-size: 18px;
+      display: none;
+    }
+
+    .not-found-message.show {
+      display: block;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">SignBridge</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+
+          <li class="dropdown">
+            <a href="learn.html">
+              <span>Learn</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i>
+            </a>
+            <ul>
+              <li><a href="alphabet.html" class="active"> Alphabet</a></li>
+              <li><a href="words.html"> Words</a></li>
+              <li><a href="quiz.html"> Quiz </a></li>
+            </ul>
+          </li>
+
+          <li><a href="translate.html"> Translator </a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background">
+
+    <div id="hero-carousel" data-bs-interval="5000"
+         class="container carousel carousel-fade"
+         data-bs-ride="carousel">
+
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown">Learn Sign Language <span>Alphabet</span></h2>
+          <p class="animate__animated animate__fadeInUp">Explore every letter with guided videos, live practice, and step-by-step support.</p>
+          <a href="#search-section" class="btn-get-started animate__animated animate__fadeInUp scrollto">Start Learning</a>
+        </div>
+      </div>
+
+  
+    </div>
+
+    <!-- Waves -->
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3"></use></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0"></use></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9"></use></g>
+    </svg>
+
+  </section>
+
+  <!-- SEARCH SECTION -->
+  <section id="search-section" class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 text-center" data-aos="fade-up">
+          <h3>Search for Alphabet Letters</h3>
+          <p>Quickly find the letter you want to practice and start real-time alphabet training.</p>
+          <input type="text" id="search-input" class="search-input" placeholder="Search letters...">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESS SECTION -->
+  <section id="progress-section" class="section light-background">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <h3>Your Alphabet Progress</h3>
+          <div class="progress mb-3">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <p><strong><span id="progress-percentage">15%</span></strong> Complete - <span id="learned-count">4</span> of <span id="total-count">26</span> letters learned</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALPHABET CATEGORIES -->
+  <section id="alphabet-section" class="section">
+    <div class="container">
+      <div class="category-tabs" data-aos="fade-up">
+        <button class="category-tab active" data-category="af">A–F</button>
+        <button class="category-tab" data-category="gl">G–L</button>
+        <button class="category-tab" data-category="mr">M–R</button>
+        <button class="category-tab" data-category="sz">S–Z</button>
+      </div>
+
+      <div id="af" class="category-content active" data-aos="fade-up">
+        <div class="category-section">
+          <h3 class="text-center mb-4">A–F</h3>
+          <div class="text-center mb-4"><a href="quiz_af.html" class="btn btn-outline-primary btn-sm">A–F Quiz</a></div>
+          <div class="not-found-message">This letter is not found</div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>A</h4><video class="word-video" controls><source src="assets/videos/alphabet/A.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="A">Start Practice</button></div><div class="score-display">Accuracy: 90%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>B</h4><video class="word-video" controls><source src="assets/videos/alphabet/B.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="B">Start Practice</button></div><div class="score-display">Accuracy: 84%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>C</h4><video class="word-video" controls><source src="assets/videos/alphabet/C.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="C">Start Practice</button></div><div class="score-display">Accuracy: 88%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>D</h4><video class="word-video" controls><source src="assets/videos/alphabet/D.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="D">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>E</h4><video class="word-video" controls><source src="assets/videos/alphabet/E.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="E">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>F</h4><video class="word-video" controls><source src="assets/videos/alphabet/F.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="F">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="gl" class="category-content" data-aos="fade-up">
+        <div class="category-section">
+          <h3 class="text-center mb-4">G–L</h3>
+          <div class="text-center mb-4"><a href="quiz_gl.html" class="btn btn-outline-primary btn-sm">G–L Quiz</a></div>
+          <div class="not-found-message">This letter is not found</div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>G</h4><video class="word-video" controls><source src="assets/videos/alphabet/G.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="G">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>H</h4><video class="word-video" controls><source src="assets/videos/alphabet/H.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="H">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>I</h4><video class="word-video" controls><source src="assets/videos/alphabet/I.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="I">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>J</h4><video class="word-video" controls><source src="assets/videos/alphabet/J.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="J">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>K</h4><video class="word-video" controls><source src="assets/videos/alphabet/K.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="K">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>L</h4><video class="word-video" controls><source src="assets/videos/alphabet/L.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="L">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="mr" class="category-content" data-aos="fade-up">
+        <div class="category-section">
+          <h3 class="text-center mb-4">M–R</h3>
+          <div class="text-center mb-4"><a href="quiz_mr.html" class="btn btn-outline-primary btn-sm">M–R Quiz</a></div>
+          <div class="not-found-message">This letter is not found</div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>M</h4><video class="word-video" controls><source src="assets/videos/alphabet/M.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="M">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>N</h4><video class="word-video" controls><source src="assets/videos/alphabet/N.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="N">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>O</h4><video class="word-video" controls><source src="assets/videos/alphabet/O.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="O">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>P</h4><video class="word-video" controls><source src="assets/videos/alphabet/P.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="P">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>Q</h4><video class="word-video" controls><source src="assets/videos/alphabet/Q.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="Q">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>R</h4><video class="word-video" controls><source src="assets/videos/alphabet/R.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="R">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sz" class="category-content" data-aos="fade-up">
+        <div class="category-section">
+          <h3 class="text-center mb-4">S–Z</h3>
+          <div class="text-center mb-4"><a href="quiz_sz.html" class="btn btn-outline-primary btn-sm">S–Z Quiz</a></div>
+          <div class="not-found-message">This letter is not found</div>
+          <div class="row">
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>S</h4><video class="word-video" controls><source src="assets/videos/alphabet/S.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="S">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>T</h4><video class="word-video" controls><source src="assets/videos/alphabet/T.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="T">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>U</h4><video class="word-video" controls><source src="assets/videos/alphabet/U.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="U">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>V</h4><video class="word-video" controls><source src="assets/videos/alphabet/V.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="V">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>W</h4><video class="word-video" controls><source src="assets/videos/alphabet/W.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="W">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>X</h4><video class="word-video" controls><source src="assets/videos/alphabet/X.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="X">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>Y</h4><video class="word-video" controls><source src="assets/videos/alphabet/Y.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="Y">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+            <div class="col-lg-4 col-md-6"><div class="word-card"><h4>Z</h4><video class="word-video" controls><source src="assets/videos/alphabet/Z.mp4" type="video/mp4">Your browser does not support the video tag.</video><div class="detection-area"><i class="bi bi-camera" style="font-size: 40px; color: var(--accent-color);"></i><span>Detection Area</span><button class="btn btn-primary mt-2" data-letter="Z">Start Practice</button></div><div class="score-display">Accuracy: 0%</div></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer dark-background">
+    <div class="container text-center">
+      <h3>SignBridge</h3>
+      <p>Breaking barriers. Building understanding. Connecting people.</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="mt-3"><small>© 2026 SignBridge. All Rights Reserved.</small></div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="./assets/js/navbar-auth.js"></script>
+  <script src="./assets/js/api-auth.js"></script>
+
+  <script>
+    AOS.init();
+
+    const PROGRESS_KEY = 'signbridge_alphabet_progress';
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const categoryContents = document.querySelectorAll('.category-content');
+    const searchInput = document.getElementById('search-input');
+    const letterCards = document.querySelectorAll('.word-card');
+    const categorySections = document.querySelectorAll('.category-section');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressPercentageText = document.getElementById('progress-percentage');
+    const learnedCountText = document.getElementById('learned-count');
+    const totalCountText = document.getElementById('total-count');
+
+    // In-memory progress state; reset on page load
+    let completedLetters = [];
+
+    function loadCompletedLetters() {
+      return completedLetters.slice();
+    }
+
+    function saveCompletedLetter(letter) {
+      const token = localStorage.getItem('auth_token');
+      if (token && window.masterletter) {
+        // Persist to backend for authenticated users; do not use localStorage for guests
+        window.masterletter(letter).then(() => {
+          // refresh in-memory and UI
+          if (window.getUserProgress) {
+            window.getUserProgress().then(p => {
+              if (p && Array.isArray(p.mastered_letters)) {
+                completedLetters = p.mastered_letters.slice();
+                updateProgress();
+              }
+            }).catch(()=>{});
+          }
+        }).catch(()=>{});
+      }
+      // Guests: do not persist progress
+    }
+
+    function updateProgress() {
+      const totalLetters = 26;
+      const completedLetters = loadCompletedLetters();
+      const learnedLetters = completedLetters.length;
+      const progressPercentage = totalLetters ? Math.round((learnedLetters / totalLetters) * 100) : 0;
+
+      if (progressBar) {
+        progressBar.style.width = progressPercentage + '%';
+        progressBar.setAttribute('aria-valuenow', progressPercentage);
+      }
+
+      progressPercentageText.textContent = progressPercentage + '%';
+      learnedCountText.textContent = learnedLetters;
+      totalCountText.textContent = totalLetters;
+
+      letterCards.forEach(card => {
+        const letter = card.querySelector('h4')?.textContent.trim();
+        const scoreDisplay = card.querySelector('.score-display');
+        if (letter && completedLetters.includes(letter)) {
+          card.classList.add('completed');
+          if (scoreDisplay) {
+            scoreDisplay.textContent = 'Completed';
+            scoreDisplay.classList.add('completed');
+          }
+        }
+      });
+    }
+
+
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        categoryContents.forEach(content => content.classList.remove('active'));
+        const category = tab.getAttribute('data-category');
+        document.getElementById(category).classList.add('active');
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const categoryContents = document.querySelectorAll('.category-content');
+
+      if (searchTerm === '') {
+        categoryContents.forEach(content => content.classList.remove('active'));
+        categoryTabs.forEach(tab => tab.classList.remove('active'));
+        if (categoryTabs.length > 0) {
+          categoryTabs[0].classList.add('active');
+          categoryContents[0].classList.add('active');
+        }
+        letterCards.forEach(card => card.style.display = 'block');
+        document.querySelectorAll('.not-found-message').forEach(msg => msg.classList.remove('show'));
+      } else {
+        categoryContents.forEach(content => content.classList.add('active'));
+        categoryTabs.forEach(tab => tab.classList.remove('active'));
+
+        categorySections.forEach(section => {
+          const cardsInSection = section.querySelectorAll('.word-card');
+          let foundCount = 0;
+
+          cardsInSection.forEach(card => {
+            const letterTitle = card.querySelector('h4').textContent.toLowerCase();
+            if (letterTitle.includes(searchTerm)) {
+              card.style.display = 'block';
+              foundCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          const notFoundMsg = section.querySelector('.not-found-message');
+          if (foundCount === 0) {
+            notFoundMsg.classList.add('show');
+          } else {
+            notFoundMsg.classList.remove('show');
+          }
+        });
+      }
+    });
+
+    document.querySelectorAll('.word-card button.btn-primary').forEach(button => {
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        const card = button.closest('.word-card');
+        const letter = card?.querySelector('h4')?.textContent.trim();
+        if (letter) {
+          window.location.href = `realtime_alphabet.html?letter=${encodeURIComponent(letter)}`;
+        }
+      });
+    });
+
+    // Initialize progress once per session using SB.init(); do NOT repeatedly fetch or clear authenticated state
+    (function initProgress() {
+      // ensure variable exists
+      completedLetters = completedLetters || [];
+      if (window.SB && typeof window.SB.init === 'function') {
+        window.SB.init().then(() => {
+          if (window.SB && window.SB.authToken && window.SB.progress && Array.isArray(window.SB.progress.mastered_letters)) {
+            // set from backend once
+            completedLetters = window.SB.progress.mastered_letters.slice();
+          } else if (!window.SB.authToken) {
+            // guest: ensure empty
+            completedLetters = [];
+          }
+        }).catch(() => {}).finally(() => updateProgress());
+      } else {
+        // no SB available: treat as guest
+        completedLetters = [];
+        updateProgress();
+      }
+    })();
+  </script>
+
+</body>
+</html>

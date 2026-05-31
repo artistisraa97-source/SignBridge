@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Quiz Hub - SignBridge</title>
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="quiz.css" rel="stylesheet">
+</head>
+
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename"> <img src="assets/img/favicon.png" alt="">  SignBridge</h1>
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="learn.html">
+              <span>Learn</span>
+              <i class="bi bi-chevron-down toggle-dropdown"></i>
+            </a>
+            <ul>
+              <li><a href="alphabet.html"> Alphabet</a></li>
+              <li><a href="words.html"> Words</a></li>
+              <li><a href="quiz.html" class="active"> Quiz </a></li>
+            </ul>
+          </li>
+          <li><a href="translate.html"> Translator </a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="hero section dark-background" style="padding-top: 120px;">
+    <div class="container">
+      <div class="row gy-5 align-items-center">
+        <div class="col-lg-7" data-aos="fade-up">
+          <p class="text-uppercase text-secondary fw-semibold mb-3">SignBridge Quiz Experience</p>
+          <h1 class="mb-4">Modern quiz training for sign language mastery.</h1>
+          <p class="lead text-muted mb-4">Choose your next challenge, refine your skills, and keep progress synced with the SignBridge learning path.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#quiz-library" class="btn btn-primary btn-get-started">Browse Quiz Types</a>
+            <a href="#quiz-summary" class="btn btn-outline-light">View Progress</a>
+          </div>
+        </div>
+        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="150">
+          <div class="hero-card p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+              <div>
+                <span class="badge bg-gradient-primary text-light rounded-pill">Premium quiz experience</span>
+                <h3 class="mt-3 mb-2">Real practice. Real progress.</h3>
+                <p class="text-muted mb-0">Stay motivated with curated quizzes, smart scoring, and instant feedback.</p>
+              </div>
+              <div class="icon-glow text-white">
+                <i class="bi bi-lightning-charge-fill fs-3"></i>
+              </div>
+            </div>
+            <div class="row gy-3">
+              <div class="col-6">
+                <div class="hero-stat-card">
+                  <span class="hero-stat-value">12</span>
+                  <p class="text-muted mb-0">Quiz types</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="hero-stat-card">
+                  <span class="hero-stat-value">24</span>
+                  <p class="text-muted mb-0">Learning levels</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="hero-stat-card">
+                  <span class="hero-stat-value">100%</span>
+                  <p class="text-muted mb-0">Saved progress</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="hero-stat-card">
+                  <span class="hero-stat-value">Live</span>
+                  <p class="text-muted mb-0">Realtime quizzes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3"></use></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0"></use></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9"></use></g>
+    </svg>
+  </section>
+
+  <main id="main">
+    <section class="section light-background" id="quiz-summary">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+          <h2>Your Quiz Journey</h2>
+          <p>Keep track of your latest quiz performance in a clean, trusted format.</p>
+        </div>
+        <div class="row gy-4 justify-content-center">
+          <div class="col-md-6 col-xl-3">
+            <div class="card-glass p-4 h-100">
+              <div class="d-flex align-items-center mb-3 gap-3">
+                <div class="stat-icon bg-primary text-white"><i class="bi bi-bar-chart-line"></i></div>
+                <div>
+                  <h6 class="mb-1">Total Attempts</h6>
+                  <p class="text-muted mb-0">Your quiz count so far</p>
+                </div>
+              </div>
+              <h2 id="hub-attempts" class="mb-0">0</h2>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="card-glass p-4 h-100">
+              <div class="d-flex align-items-center mb-3 gap-3">
+                <div class="stat-icon bg-secondary text-white"><i class="bi bi-award"></i></div>
+                <div>
+                  <h6 class="mb-1">Best Score</h6>
+                  <p class="text-muted mb-0">Highest accuracy achieved</p>
+                </div>
+              </div>
+              <h2 id="hub-best-score" class="mb-0">0%</h2>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="card-glass p-4 h-100">
+              <div class="d-flex align-items-center mb-3 gap-3">
+                <div class="stat-icon bg-success text-white"><i class="bi bi-lightning-charge"></i></div>
+                <div>
+                  <h6 class="mb-1">Current Streak</h6>
+                  <p class="text-muted mb-0">Consecutive strong quiz sessions</p>
+                </div>
+              </div>
+              <h2 id="hub-streak" class="mb-0">0</h2>
+            </div>
+          </div>
+          <div class="col-md-6 col-xl-3">
+            <div class="card-glass p-4 h-100">
+              <div class="d-flex align-items-center mb-3 gap-3">
+                <div class="stat-icon bg-info text-white"><i class="bi bi-clock-history"></i></div>
+                <div>
+                  <h6 class="mb-1">Last Quiz</h6>
+                  <p class="text-muted mb-0">Most recent result</p>
+                </div>
+              </div>
+              <p id="hub-last-quiz" class="mb-0">No quiz played yet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz-runner" class="section d-none">
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4">
+          <div class="col-xl-8">
+            <div class="quiz-panel p-4">
+              <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+                <div>
+                  <p class="text-uppercase text-secondary mb-2">Active Quiz</p>
+                  <h2 id="quiz-mode-title" class="mb-2">Quiz Title</h2>
+                  <p id="quiz-mode-copy" class="text-muted mb-0">Quiz description goes here.</p>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="badge badge-pill badge-soft-primary" id="quiz-difficulty">Easy</span>
+                  <span class="badge badge-pill badge-soft-secondary" id="quiz-time-estimate">12 sec</span>
+                  <span class="badge badge-pill badge-soft-info text-dark" id="quiz-reward">80 XP</span>
+                </div>
+              </div>
+
+              <div class="quiz-progress-panel mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div class="text-muted">Question <strong id="quiz-step">1</strong> of <strong id="quiz-total">10</strong></div>
+                  <div class="text-muted">Time left: <strong id="quiz-timer">00:00</strong></div>
+                </div>
+                <div class="progress progress-soft rounded-pill" style="height: 14px;">
+                  <div id="quiz-progress-bar" class="progress-bar bg-primary rounded-pill" role="progressbar" style="width: 0%"></div>
+                </div>
+              </div>
+
+              <div class="question-card p-4 mb-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div>
+                    <h5 class="mb-1" id="question-type-label">Question</h5>
+                    <p class="text-muted mb-0" id="question-prompt">Question text appears here.</p>
+                  </div>
+                  <span class="badge badge-soft-light text-dark" id="question-meta">Multiple Choice</span>
+                </div>
+                <div id="question-media" class="quiz-media mb-4 d-none"></div>
+                <div id="answer-options" class="row g-3"></div>
+              </div>
+
+              <div class="feedback-banner mb-4" id="feedback-message">Answer the question to see immediate feedback.</div>
+
+              <div class="d-flex flex-wrap gap-3 control-buttons">
+                <button id="btn-start" class="btn btn-primary btn-lg">Start Quiz</button>
+                <button id="btn-next" class="btn btn-outline-primary btn-lg d-none">Next Question</button>
+                <button id="btn-finish" class="btn btn-success btn-lg d-none">Finish</button>
+                <a id="btn-back" href="quiz.html" class="btn btn-outline-dark btn-lg">Back</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-4">
+            <div class="quiz-panel p-4">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                  <h5 class="mb-1">Live Score</h5>
+                  <p class="text-muted mb-0">Track your current performance.</p>
+                </div>
+                <span class="badge badge-soft-success">Real Data</span>
+              </div>
+
+              <div class="result-grid mb-4">
+                <div class="result-line">
+                  <span class="label">Correct</span>
+                  <span class="result-value" id="stat-correct">0</span>
+                </div>
+                <div class="result-line">
+                  <span class="label">Wrong</span>
+                  <span class="result-value" id="stat-wrong">0</span>
+                </div>
+                <div class="result-line">
+                  <span class="label">Streak</span>
+                  <span class="result-value" id="stat-streak">0</span>
+                </div>
+                <div class="result-line">
+                  <span class="label">Accuracy</span>
+                  <span class="result-value" id="stat-accuracy">0%</span>
+                </div>
+              </div>
+
+              <div class="result-card d-none" id="result-panel">
+                <h5 class="result-heading">Quiz Results</h5>
+                <div class="score-pill" id="result-score">0%</div>
+                <p class="result-copy" id="result-message">Well done.</p>
+                <div class="result-line mb-3">
+                  <span class="label">Badge earned</span>
+                  <span class="result-value" id="result-badge">None</span>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                  <button id="btn-retry" class="btn btn-primary w-100">Retry</button>
+                  <button id="btn-suggest" class="btn btn-outline-secondary w-100">Next Quiz</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz-library" class="services section">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+          <h2>Quiz Library</h2>
+          <p>Choose the quiz that fits your study plan.</p>
+        </div>
+
+        <div class="row gy-4 quiz-list">
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-primary"><i class="bi bi-123"></i></div>
+              <h3>A–F Quiz</h3>
+              <p>Practice the first alphabet group with letter recognition and video-based challenges.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-primary">Easy</span>
+                <span class="badge bg-secondary">6 Qs</span>
+                <span class="badge bg-info text-dark">Alphabet</span>
+              </div>
+              <a href="quiz.html?mode=alphabet&group=AF" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-primary"><i class="bi bi-camera-video-fill"></i></div>
+              <h3>A–F Realtime Quiz</h3>
+              <p>Sign the shown letters A through F using your webcam and receive instant feedback.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-primary">Easy</span>
+                <span class="badge bg-secondary">Live</span>
+                <span class="badge bg-info text-dark">Camera</span>
+              </div>
+              <a href="quiz_af.html" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-secondary"><i class="bi bi-123"></i></div>
+              <h3>G–L Quiz</h3>
+              <p>Continue alphabet mastery with the next letter group and quick review questions.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-primary">Easy</span>
+                <span class="badge bg-secondary">6 Qs</span>
+                <span class="badge bg-info text-dark">Alphabet</span>
+              </div>
+              <a href="quiz.html?mode=alphabet&group=GL" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-secondary"><i class="bi bi-camera-video-fill"></i></div>
+              <h3>G–L Realtime Quiz</h3>
+              <p>Sign the shown letters G through L using your webcam and receive instant feedback.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-primary">Easy</span>
+                <span class="badge bg-secondary">Live</span>
+                <span class="badge bg-info text-dark">Camera</span>
+              </div>
+              <a href="quiz_gl.html" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-success"><i class="bi bi-123"></i></div>
+              <h3>M–R Quiz</h3>
+              <p>Practice the middle alphabet letters with multiple choice and sign recognition.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-warning text-dark">Medium</span>
+                <span class="badge bg-secondary">6 Qs</span>
+                <span class="badge bg-info text-dark">Alphabet</span>
+              </div>
+              <a href="quiz.html?mode=alphabet&group=MR" class="read-more"> Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-success"><i class="bi bi-camera-video-fill"></i></div>
+              <h3>M–R Realtime Quiz</h3>
+              <p>Sign the shown letters M through R using your webcam and receive instant feedback.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-warning text-dark">Medium</span>
+                <span class="badge bg-secondary">Live</span>
+                <span class="badge bg-info text-dark">Camera</span>
+              </div>
+              <a href="quiz_mr.html" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-warning"><i class="bi bi-123"></i></div>
+              <h3>S–Z Quiz</h3>
+              <p>Finish the alphabet with advanced sign matching and speed training.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-warning text-dark">Medium</span>
+                <span class="badge bg-secondary">8 Qs</span>
+                <span class="badge bg-info text-dark">Alphabet</span>
+              </div>
+              <a href="quiz.html?mode=alphabet&group=SZ" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-danger"><i class="bi bi-camera-video-fill"></i></div>
+              <h3>S–Z Realtime Quiz</h3>
+              <p>Sign the shown letters S through Z using your webcam and receive instant feedback.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-warning text-dark">Medium</span>
+                <span class="badge bg-secondary">Live</span>
+                <span class="badge bg-info text-dark">Camera</span>
+              </div>
+              <a href="quiz_sz.html" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-info"><i class="bi bi-award"></i></div>
+              <h3>Full Alphabet Challenge</h3>
+              <p>Test your full alphabet knowledge with a complete letter set and timed scoring.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-danger">Hard</span>
+                <span class="badge bg-secondary">12 Qs</span>
+                <span class="badge bg-info text-dark">Alphabet</span>
+              </div>
+              <a href="quiz.html?mode=full_alphabet" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-primary">
+                    <i class="bi bi-camera-video-fill"></i>
+              </div>
+                  <h3>Greetings Video Quiz</h3>
+                  <p>Watch sign videos and choose the correct greeting word.</p>
+              <div class="quiz-meta">
+                  <span class="badge bg-primary">Easy</span>
+                  <span class="badge bg-secondary">Video</span>
+                  <span class="badge bg-info text-dark">Words</span>
+              </div>
+                  <a href="quiz.html?mode=video_words&topic=greetings" class="read-more">
+                    Start Quiz <i class="bi bi-arrow-right"></i>
+                  </a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-primary"><i class="bi bi-chat-dots"></i></div>
+              <h3>Greetings Quiz</h3>
+              <p>Practice core sign language greetings and polite expressions in daily conversation.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-primary">Easy</span>
+                <span class="badge bg-secondary">8 Qs</span>
+                <span class="badge bg-info text-dark">Words</span>
+              </div>
+              <a href="quiz.html?mode=words&topic=greetings" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-secondary"><i class="bi bi-chat-dots"></i></div>
+              <h3>Daily Words Quiz</h3>
+              <p>Improve practical vocabulary with signs used in everyday activities.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-success">Medium</span>
+                <span class="badge bg-secondary">10 Qs</span>
+                <span class="badge bg-info text-dark">Words</span>
+              </div>
+              <a href="quiz.html?mode=words&topic=daily" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-success"><i class="bi bi-chat-dots"></i></div>
+              <h3>Beginner Words</h3>
+              <p>Build confidence with basic words that support communication practice.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-primary">Easy</span>
+                <span class="badge bg-secondary">8 Qs</span>
+                <span class="badge bg-info text-dark">Words</span>
+              </div>
+              <a href="quiz.html?mode=words&topic=beginner" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-warning"><i class="bi bi-chat-dots"></i></div>
+              <h3>Common Phrases</h3>
+              <p>Master everyday phrases and sign combinations used in real conversations.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-warning text-dark">Medium</span>
+                <span class="badge bg-secondary">10 Qs</span>
+                <span class="badge bg-info text-dark">Words</span>
+              </div>
+              <a href="quiz.html?mode=words&topic=phrases" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-primary"><i class="bi bi-grid-1x2"></i></div>
+              <h3>Alphabet + Words</h3>
+              <p>A mixed challenge that combines letter recognition and vocabulary questions.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-warning text-dark">Medium</span>
+                <span class="badge bg-secondary">12 Qs</span>
+                <span class="badge bg-info text-dark">Mixed</span>
+              </div>
+              <a href="quiz.html?mode=mixed" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-danger"><i class="bi bi-shuffle"></i></div>
+              <h3>Random Challenge</h3>
+              <p>Test your agility with a random mix of alphabet and word questions.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-danger">Hard</span>
+                <span class="badge bg-secondary">12 Qs</span>
+                <span class="badge bg-info text-dark">Mixed</span>
+              </div>
+              <a href="quiz.html?mode=mixed_speed" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-info"><i class="bi bi-camera-video"></i></div>
+              <h3>Realtime Letter Quiz</h3>
+              <p>Use your camera to sign a letter and receive live feedback from the recognition system.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-danger">Hard</span>
+                <span class="badge bg-secondary">Live</span>
+                <span class="badge bg-info text-dark">Realtime</span>
+              </div>
+              <a href="quiz.html?mode=realtime_letter" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon text-warning"><i class="bi bi-camera-video"></i></div>
+              <h3>Realtime Word Quiz</h3>
+              <p>Translate a shown word into sign using the realtime word trainer.</p>
+              <div class="quiz-meta">
+                <span class="badge bg-danger">Hard</span>
+                <span class="badge bg-secondary">Live</span>
+                <span class="badge bg-info text-dark">Realtime</span>
+              </div>
+              <a href="quiz.html?mode=realtime_word" class="read-more">Start Quiz <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container text-center">
+      <h3>SignBridge</h3>
+      <p>Breaking barriers. Building understanding. Connecting people.</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="mt-3"><small>© 2026 SignBridge. All Rights Reserved.</small></div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <div id="preloader"></div>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="quiz.js"></script>
+	<script src="./assets/js/navbar-auth.js"></script>
+	<script src="./assets/js/api-auth.js"></script>
+</body>
+
+</html>

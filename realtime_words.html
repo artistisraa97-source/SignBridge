@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Real-time Words Practice - SignBridge</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .practice-container {
+      padding: 120px 0 60px;
+    }
+
+    .practice-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    }
+
+    .camera-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: #000;
+      min-height: 360px;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    #camera-preview {
+      width: 100%;
+      height: 100%;
+      transform: scaleX(-1);
+      object-fit: cover;
+      display: block;
+    }
+
+    .camera-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 14px 18px;
+      background: rgba(17, 24, 39, 0.75);
+      color: #fff;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .status-chip {
+      border-radius: 50px;
+      padding: 10px 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .result-card {
+      background: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .result-heading {
+      font-size: 22px;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .result-copy {
+      color: #475569;
+      margin-bottom: 24px;
+      line-height: 1.65;
+    }
+
+    .score-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ff6b35;
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hidden-result-line {
+      display: none;
+    }
+
+    .result-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .result-line .label {
+      color: #64748b;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    .result-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .feedback-banner {
+      border-radius: 18px;
+      padding: 18px 20px;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .control-buttons .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: 700;
+      min-width: 140px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #start-session {
+      background: #ff6b35;
+      border-color: #ff6b35;
+      color: #fff;
+    }
+
+    #stop-session {
+      background: #dc3545;
+      border-color: #dc3545;
+      color: #fff;
+    }
+
+    #reset-score {
+      background: #6c757d;
+      border-color: #6c757d;
+      color: #fff;
+    }
+
+    #reset-score + a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ff6b35;
+      border-color: #ff6b35;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: 700;
+      min-width: 140px;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+    }
+
+    #target-word-label {
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ff6b35;
+    }
+
+    .word-badge {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1;
+      color: #ff6b35;
+      word-break: break-word;
+      max-width: 100%;
+    }
+
+    .progress-tracker {
+      margin-bottom: 24px;
+    }
+
+    .progress-track {
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    .progress-track .progress-bar {
+      background: #ff6b35;
+    }
+  </style>
+</head>
+
+<body>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename"> <img src="assets/img/favicon.png" alt="">  SignBridge</h1></a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="learn.html"><span>Learn</span><i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="alphabet.html"> Alphabet</a></li>
+              <li><a href="words.html"> Words</a></li>
+              <li><a href="quiz.html"> Quiz </a></li>
+            </ul>
+          </li>
+          <li><a href="translate.html"> Translator </a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="hero section dark-background">
+    <div id="hero-carousel" data-bs-interval="5000"
+         class="container carousel carousel-fade"
+         data-bs-ride="carousel">
+
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <h2 class="animate__animated animate__fadeInDown"> Practice <span>Words</span></h2>
+          <p class="animate__animated animate__fadeInUp">Build your word signing confidence with real-time feedback and scoring.</p>
+          <a href="#practice" class="btn-get-started animate__animated animate__fadeInUp scrollto">Start Practicing</a>
+        </div>
+      </div>
+    </div>
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="wave1"><use xlink:href="#wave-path" x="50" y="3"></use></g>
+      <g class="wave2"><use xlink:href="#wave-path" x="50" y="0"></use></g>
+      <g class="wave3"><use xlink:href="#wave-path" x="50" y="9"></use></g>
+    </svg>
+  </section>
+
+  <main id="practice" class="practice-container">
+    <div class="container" data-aos="fade-up">
+      <div class="practice-card">
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <div class="mb-4">
+              <p class="text-uppercase text-muted mb-2" id="target-word-label">Practice word</p>
+              <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-3">
+                <div>
+                  <div class="word-badge text-uppercase" id="target-word">HELLO</div>
+                </div>
+                <div class="text-end">
+                  <p class="text-uppercase text-muted mb-1">Session timer</p>
+                  <div class="score-pill" style="background: rgba(255, 107, 53, 0.12); color: #ff6b35;"><span id="timer-value">20s</span></div>
+                </div>
+              </div>
+              <div class="progress-tracker">
+                <div class="progress-track">
+                  <div id="progress-bar" class="progress-bar" role="progressbar" style="width: 0%; height: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                  <small class="text-muted">Words mastered</small>
+                  <small class="text-muted" id="completed-count">0</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="camera-frame mb-3">
+              <video id="camera-preview" playsinline autoplay muted></video>
+              <div class="camera-caption">
+                <span><i class="bi bi-camera-video"></i> Camera active. Start practicing!</span>
+                <span id="session-state">Stopped</span>
+              </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-3">
+              <button id="start-session" class="btn btn-primary">Start Practice</button>
+              <button id="stop-session" class="btn btn-outline-secondary">Stop</button>
+              <button id="reset-score" class="btn btn-outline-danger">Reset Score</button>
+              <a href="words.html" class="btn btn-outline-secondary"> Back to Words</a>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="result-card">
+              <h2 class="result-heading">Practice Results</h2>
+              <p class="result-copy">Real-time word recognition and feedback to keep you focused.</p>
+              <div class="score-pill">Score: <span id="score-value">0 / 100</span></div>
+
+              <div class="result-grid">
+                <div class="result-line">
+                  <div class="label">Current prediction</div>
+                  <div class="result-value" id="predicted-word">-</div>
+                </div>
+                <div class="result-line hidden-result-line">
+                  <div class="label">Confidence</div>
+                  <div class="result-value" id="confidence-value">0%</div>
+                </div>
+                <div class="result-line hidden-result-line">
+                  <div class="label">Performance</div>
+                  <div class="result-value" id="performance-value">0%</div>
+                </div>
+              </div>
+
+              <div class="feedback-banner" id="feedback-pill">Ready to start</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+    <div class="container text-center">
+      <h3>SignBridge</h3>
+      <p>Breaking barriers. Building understanding. Connecting people.</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="mt-3"><small>© 2026 SignBridge. All Rights Reserved.</small></div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    AOS.init();
+
+    const targetWordEl = document.getElementById('target-word');
+    const predictedWordEl = document.getElementById('predicted-word');
+    const confidenceValueEl = document.getElementById('confidence-value');
+    const performanceEl = document.getElementById('performance-value');
+    const timerEl = document.getElementById('timer-value');
+    const scoreEl = document.getElementById('score-value');
+    const completedCountEl = document.getElementById('completed-count');
+    const progressBarEl = document.getElementById('progress-bar');
+    const feedbackPill = document.getElementById('feedback-pill');
+    const sessionState = document.getElementById('session-state');
+    const startButton = document.getElementById('start-session');
+    const stopButton = document.getElementById('stop-session');
+    const resetButton = document.getElementById('reset-score');
+    const cameraPreview = document.getElementById('camera-preview');
+
+    const SESSION_ID = crypto.randomUUID?.() || Math.random().toString(36).slice(2);
+    const PROGRESS_KEY = 'signbridge_words_progress';
+    const ACCURACY_KEY = 'signbridge_words_accuracy';
+    const API_URL = window.location.protocol === 'file:' ? 'http://127.0.0.1:8000/api/words/predict' : '/api/words/predict';
+
+    let stream = null;
+    let sessionActive = false;
+    let score = 0;
+    let consecutiveCorrect = 0;
+    let stableTargetCount = 0;
+    let timer = 20;
+    let timerInterval = null;
+    let predictInterval = null;
+    const HIGH_CONFIDENCE_THRESHOLD = 0.95;
+    const STABLE_TARGET_FRAMES = 6;
+    const targetWord = getQueryParam('word')?.trim() || 'Hello';
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function updateStatus(predicted = '-', confidence = 0, performance = 0) {
+      predictedWordEl.textContent = predicted || '-';
+      confidenceValueEl.textContent = `${Math.round(confidence * 100)}%`;
+      performanceEl.textContent = `${Math.round(performance)}%`;
+      scoreEl.textContent = `${score} / 100`;
+    }
+
+    // In-memory caches reset on page load
+    let completedWordsCache = [];
+    let wordAccuraciesCache = {};
+
+    function loadCompletedWords() {
+      return completedWordsCache.slice();
+    }
+
+    function loadWordAccuracies() {
+      return Object.assign({}, wordAccuraciesCache);
+    }
+
+    function saveCompletedWord(word, confidence = 0) {
+      const normalized = word.trim().toLowerCase();
+      const token = localStorage.getItem('auth_token');
+      if (token && window.completeWord) {
+        // Persist to backend for authenticated users
+        window.completeWord(normalized).catch(() => {});
+        // update in-memory caches
+        if (!completedWordsCache.includes(normalized)) completedWordsCache.push(normalized);
+        const accuracy = Math.round(confidence * 100);
+        if (accuracy > 0) wordAccuraciesCache[normalized] = Math.max(wordAccuraciesCache[normalized] || 0, accuracy);
+        return;
+      }
+
+      // Guests: do not persist or use localStorage; keep empty state
+    }
+
+    function updateProgressDisplay() {
+      const completed = loadCompletedWords();
+      const percent = Math.min(Math.round((completed.length / 20) * 100), 100);
+      completedCountEl.textContent = completed.length;
+      progressBarEl.style.width = `${percent}%`;
+      progressBarEl.setAttribute('aria-valuenow', percent);
+    }
+
+    function setFeedback(message, type = 'warning') {
+      feedbackPill.textContent = message;
+      feedbackPill.className = `feedback-banner ${type}`;
+    }
+
+    function resetSessionState() {
+      score = 0;
+      consecutiveCorrect = 0;
+      stableTargetCount = 0;
+      timer = 20;
+      updateStatus('-', 0, 0);
+      timerEl.textContent = `${timer}s`;
+      setFeedback('Ready to start', 'warning');
+      sessionState.textContent = 'Stopped';
+      updateProgressDisplay();
+    }
+
+    async function initCamera() {
+      if (stream) return;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+        cameraPreview.srcObject = stream;
+        await cameraPreview.play();
+      } catch (error) {
+        setFeedback('Camera permission required', 'danger');
+        console.error('Camera error:', error);
+      }
+    }
+
+    function stopCamera() {
+      if (!stream) return;
+      stream.getTracks().forEach(track => track.stop());
+      cameraPreview.srcObject = null;
+      stream = null;
+    }
+
+    async function resetServerSession() {
+      try {
+        await fetch(API_URL.replace('/predict', '/reset_session'), {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: SESSION_ID })
+        });
+      } catch {
+        // ignore server reset errors; prediction endpoint may not be available yet.
+      }
+    }
+
+    function stopSession(options = {}) {
+      if (!sessionActive) return;
+      sessionActive = false;
+      clearInterval(timerInterval);
+      clearInterval(predictInterval);
+      timerInterval = null;
+      predictInterval = null;
+      sessionState.textContent = options.state || 'Stopped';
+      setFeedback(options.feedback || 'Session stopped', options.type || 'warning');
+    }
+
+    function completeCurrentWord(confidence) {
+      saveCompletedWord(targetWord, confidence);
+      updateProgressDisplay();
+      stopSession({ state: 'Mastered', feedback: 'Great job! Word completed and added to progress', type: 'success' });
+    }
+
+    function handlePrediction(label, confidence) {
+      const normalizedLabel = label?.trim() || '';
+      const performance = Math.round(confidence * 100);
+      const targetMatch = normalizedLabel.toLowerCase() === targetWord.toLowerCase();
+      const highConfidenceTarget = targetMatch && confidence >= HIGH_CONFIDENCE_THRESHOLD;
+
+      console.log("Predicted class:", normalizedLabel);
+      console.log("Confidence:", confidence);
+      console.log("Consecutive correct:", consecutiveCorrect);
+      console.log("Stable target frames:", stableTargetCount);
+
+      if (highConfidenceTarget) {
+        stableTargetCount += 1;
+      } else {
+        stableTargetCount = 0;
+      }
+
+      if (targetMatch) {
+        consecutiveCorrect += 1;
+        const base = Math.round((score * 0.25) + (performance * 0.75));
+        const bonus = consecutiveCorrect > 3 ? 5 : 0;
+        score = clamp(base + bonus, 0, 100);
+      } else {
+        consecutiveCorrect = 0;
+        const decay = normalizedLabel === '' ? 2 : 1;
+        score = clamp(Math.round((score * 0.88) + (performance * 0.12) - decay), 0, 100);
+      }
+
+      if (stableTargetCount >= STABLE_TARGET_FRAMES) {
+        completeCurrentWord(confidence);
+      } else if (targetMatch) {
+        setFeedback('Nice work — hold the target sign steady', 'success');
+      } else if (normalizedLabel === '') {
+        setFeedback('No sign detected yet — try again', 'warning');
+      } else {
+        setFeedback('Keep practicing — match the target word', 'warning');
+      }
+
+      updateStatus(normalizedLabel || '-', confidence, performance);
+    }
+
+    async function captureFrame() {
+      if (!stream || cameraPreview.readyState < 2) return null;
+      const canvas = document.createElement('canvas');
+      const width = cameraPreview.videoWidth || 640;
+      const height = cameraPreview.videoHeight || 480;
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(cameraPreview, 0, 0, width, height);
+      return new Promise(resolve => canvas.toBlob(resolve, 'image/jpeg', 0.95));
+    }
+
+    async function requestPrediction() {
+      if (!sessionActive) return;
+      const blob = await captureFrame();
+      if (!blob) return;
+      const formData = new FormData();
+      formData.append('image', blob, 'frame.jpg');
+      formData.append('session_id', SESSION_ID);
+
+      try {
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          body: formData
+        });
+        if (!response.ok) {
+          throw new Error('Prediction request failed');
+        }
+        const data = await response.json();
+        console.log('Prediction response:', data);
+        if (data.frames_collected && data.frames_collected < 30) {
+          setFeedback(`Collecting frames: ${data.frames_collected}/30`,'warning');
+        }
+        handlePrediction(data.label, Number(data.confidence) || 0);
+      } catch (error) {
+        console.error('Prediction error:', error);
+        setFeedback('Prediction server unavailable', 'danger');
+      }
+    }
+
+    function startSession() {
+      if (sessionActive) return;
+      if (!stream) {
+        setFeedback('Camera not ready yet', 'danger');
+        return;
+      }
+      sessionActive = true;
+      sessionState.textContent = 'Running';
+      setFeedback('Session started', 'success');
+      timerInterval = setInterval(() => {
+        timer -= 1;
+        timerEl.textContent = `${timer}s`;
+        if (timer <= 0) {
+          stopSession();
+          setFeedback('Session complete', 'success');
+        }
+      }, 1000);
+      predictInterval = setInterval(requestPrediction, 100);
+      requestPrediction();
+    }
+
+    startButton.addEventListener('click', () => {
+      initCamera().then(() => resetServerSession().then(startSession));
+    });
+
+    stopButton.addEventListener('click', stopSession);
+    resetButton.addEventListener('click', () => {
+      stopSession();
+      resetSessionState();
+      resetServerSession();
+    });
+
+    window.addEventListener('load', () => {
+      targetWordEl.textContent = targetWord.toUpperCase();
+      initCamera();
+      resetSessionState();
+      resetServerSession();
+      const token = localStorage.getItem('auth_token');
+      if (token && window.getUserProgress) {
+        window.getUserProgress().then(p => {
+          if (p) {
+            if (Array.isArray(p.completed_words)) completedWordsCache = p.completed_words.slice();
+            if (p.practiceAccuracy && typeof p.practiceAccuracy === 'object') wordAccuraciesCache = Object.assign({}, p.practiceAccuracy);
+          }
+        }).catch(() => {}).finally(() => updateProgressDisplay());
+      } else {
+        updateProgressDisplay();
+      }
+    });
+
+    window.addEventListener('beforeunload', () => {
+      stopSession();
+      stopCamera();
+    });
+  </script>
+</body>
+</html>
