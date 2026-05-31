@@ -1,405 +1,390 @@
-# 🤟 SignBridge
+# SignBridge
 
-## AI-Powered Sign Language Learning & Realtime Translation Platform
+## AI-Powered Sign Language Learning and Real-Time Translation Platform
 
-SignBridge is a comprehensive, intelligent platform designed to make sign language learning accessible, interactive, and engaging. Built with cutting-edge AI and machine learning technologies, SignBridge enables users to learn sign language through gamified quizzes, alphabet training, and real-time translation powered by computer vision.
-
----
-
-## ✨ Features
-
-- 🎯 **Realtime Sign Language Translation** - Live webcam-based sign recognition and translation
-- 🔤 **Alphabet Learning System** - Interactive lessons for learning the sign language alphabet
-- 📚 **Word & Phrase Learning** - Comprehensive vocabulary building modules
-- 🎮 **Interactive Quiz Platform** - Gamified assessments for vocabulary and sentence comprehension
-- 📊 **Progress Dashboard** - Track learning progress and achievements
-- ⚡ **Realtime Sentence Prediction** - Advanced AI model predicting full sentences from sign sequences
-- 🎨 **Responsive Bootstrap UI** - Beautiful, mobile-friendly interface
-- 🔗 **RESTful API** - Complete FastAPI backend for extensibility
-- 🧠 **MediaPipe Landmarks** - Advanced hand and pose detection
-- 🤖 **TensorFlow/Keras Models** - State-of-the-art deep learning models for sign recognition
-- 📱 **Multi-page Application** - Dedicated pages for learning, translation, and analytics
+SignBridge is an AI-powered platform built to help users learn sign language, track progress, and translate signs in real time. It combines browser-based learning pages, user authentication, and machine learning pipelines for alphabet and word recognition.
 
 ---
 
-## 🛠️ Technologies Used
+# Project Overview
+
+SignBridge is designed to bridge the gap between sign language learners and real-time communication. The platform supports alphabet and word learning, interactive quizzes, progress tracking, and live sign translation using webcam capture, MediaPipe landmark extraction, and TensorFlow inference.
+
+The primary goal of SignBridge is to provide an accessible learning environment where users can practice sign language, validate their progress, and experience AI-powered gesture recognition in a modern web interface.
+
+---
+
+# Features
+
+- Alphabet Learning
+- Word Learning
+- Quiz System
+- Progress Tracking
+- Real-Time Sign Recognition
+- Authentication System
+- AI-powered Translation
+
+---
+
+# Technology Stack
 
 ### Frontend
-- **HTML5** - Semantic markup
-- **CSS3** - Advanced styling and animations
-- **Bootstrap 5** - Responsive design framework
-- **JavaScript** - Interactive functionality and real-time processing
+- HTML5
+- CSS3
+- Bootstrap 5
+- JavaScript
 
 ### Backend
-- **FastAPI** - High-performance web framework
-- **Python 3** - Core backend logic
-- **Uvicorn** - ASGI web server
+- FastAPI
+- Python 3.10
+- Uvicorn
+- SQLAlchemy
 
-### AI/ML & Computer Vision
-- **TensorFlow** - Deep learning framework
-- **Keras** - Neural network API
-- **MediaPipe** - Hand and pose landmark detection
-- **OpenCV** - Image processing and video handling
-- **NumPy** - Numerical computations
-- **scikit-learn** - Machine learning utilities
+### AI/ML
+- TensorFlow
+- Keras
+- scikit-learn
+- NumPy
 
----
-
-## 🧠 AI/ML Pipeline
-
-SignBridge utilizes a sophisticated multi-stage AI pipeline for accurate sign language recognition:
-
-1. **MediaPipe Landmark Extraction**
-   - Extracts 21-point hand landmarks from video frames
-   - Captures hand position, orientation, and gesture details
-
-2. **OpenCV Video Processing**
-   - Real-time frame capture from webcam
-   - Video stream preprocessing and normalization
-   - Frame buffering for sequence processing
-
-3. **CNN + LSTM Architecture**
-   - Convolutional Neural Network (CNN) for spatial feature extraction
-   - Long Short-Term Memory (LSTM) for temporal sequence modeling
-   - Captures temporal dynamics of sign language gestures
-
-4. **TensorFlow/Keras Inference**
-   - Real-time sequence prediction
-   - Confidence scoring for predictions
-   - Multi-class classification for signs and letters
-
-5. **Realtime Frame Buffering**
-   - Sliding window approach for sequence management
-   - Temporal smoothing for improved accuracy
-   - Reduces noise and fluctuations in predictions
+### Computer Vision
+- OpenCV
+- MediaPipe
 
 ---
 
-## 📁 Project Structure
+# Project Structure
 
 ```
 SignBridge/
-│
-├── main.py                          # FastAPI application entry point
-├── server.py                        # Alternative server configuration
-├── requirements.txt                 # Python dependencies
-│
-├── routers/                         # API route handlers
-│   ├── auth_router.py
-│   ├── translator_router.py
-│   ├── words_api.py
-│   ├── spell_api.py
-│   └── ...
-│
-├── services/                        # Business logic layer
-│   ├── predictor_service.py
-│   ├── translator_service.py
-│   └── ...
-│
-├── auth/                            # Authentication module
+├── .gitignore
+├── README.md
+├── app.db
+├── users.db
+├── main.py
+├── server.py
+├── requirements.txt
+├── index.html
+├── learn.html
+├── alphabet.html
+├── translate.html
+├── quiz.html
+├── progress.html
+├── signup.html
+├── words.html
+├── realtime_alphabet.html
+├── realtime_words.html
+├── create_landmark_dataset.py
+├── train_landmarks.py
+├── realtime_landmarks.py
+├── keypoints.py
+├── train.py
+├── realtime.py
+├── predict_words.py
+├── grammar_corrector.py
+├── alphabet_quiz.js
+├── progress.js
+├── quiz.js
+├── script.js
+├── style.css
+├── quiz.css
+├── progress.css
+├── assets/
+│   ├── css/
+│   ├── img/
+│   ├── js/
+│   ├── scss/
+│   ├── vendor/
+│   └── videos/
+├── auth/
 │   ├── auth.py
 │   ├── auth_router.py
+│   ├── database.py
+│   ├── email_utils.py
 │   ├── models.py
 │   ├── schemas.py
+│   └── __init__.py
+├── backend/
+│   ├── main.py
+│   ├── auth.py
+│   ├── auth_router.py
 │   ├── database.py
-│   └── email_utils.py
-│
-├── backend/                         # Backend utilities and helpers
-│
-├── utils/                           # Utility functions
-│
-├── assets/                          # Static assets
-│   ├── css/
-│   ├── js/
-│   ├── img/
-│   ├── music/
-│   └── videos/
-│
-├── asl_alphabet_train/              # Training dataset (organized by label)
-│   ├── 0-9/
-│   ├── A-Z/
-│   ├── space/
-│   └── ...
-│
-├── asl_landmarks.csv                # Pre-computed landmark features
-├── asl_cnn_model.keras              # CNN model for alphabet recognition
-├── asl_landmarks_model.h5           # Landmark detection model
-│
-├── index.html                       # Home page
-├── learn.html                       # Learning interface
-├── alphabet.html                    # Alphabet trainer
-├── translate.html                   # Real-time translation tool
-├── quiz.html                        # Quiz platform
-├── progress.html                    # Progress dashboard
-├── realtime.html                    # Real-time recognition interface
-├── signup.html                      # User registration
-│
-└── README.md                        # Project documentation
+│   ├── models.py
+│   ├── schemas.py
+│   ├── requirements.txt
+│   └── users.db
+├── routers/
+│   ├── alphabet_router.py
+│   ├── words_router.py
+│   ├── translator_router.py
+│   ├── spell_router.py
+│   ├── quiz_router.py
+│   ├── progress_router.py
+│   └── __init__.py
+├── services/
+│   ├── prediction_service.py
+│   ├── progress_service.py
+│   ├── realtime_service.py
+│   ├── translator_realtime_engine.py
+│   ├── video_service.py
+│   └── __init__.py
+├── asl_alphabet_train/
+├── dataset/
+├── data/
+├── cnn_lstm_output/
+└── utils/
 ```
 
 ---
 
-## 🚀 Installation
+# Installation
 
-### Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
+## Prerequisites
+- Python 3.10
 - Git
 
-### Step 1: Clone the Repository
+## Clone Repository
+
 ```bash
-git clone https://github.com/yourusername/SignBridge.git
+git clone https://github.com/smnsdra/SignBridge.git
 cd SignBridge
 ```
 
-### Step 2: Create Virtual Environment
-```bash
-python -m venv signai_env_v2
+## Create Virtual Environment
+
+Windows:
+
 ```
-
-### Step 3: Activate Virtual Environment
-
-**On Windows:**
-```bash
+python -m venv signai_env_v2
 signai_env_v2\Scripts\activate
 ```
 
-**On macOS/Linux:**
-```bash
+Linux/macOS:
+
+```
+python -m venv signai_env_v2
 source signai_env_v2/bin/activate
 ```
 
-### Step 4: Install Dependencies
-```bash
+## Install Dependencies
+
+```
 pip install -r requirements.txt
 ```
 
 ---
 
-## ▶️ Running the Project
+# Running the Website
 
-### Option 1: Direct Python Execution
-```bash
+The application is started using:
+
+```
 python main.py
 ```
 
-### Option 2: Uvicorn Server (Recommended)
-```bash
-uvicorn main:app --host 0.0.0.0 --port 8000
+After startup, open:
+
+```
+http://localhost:8000/progress.html
 ```
 
-### Option 3: Uvicorn with Auto-Reload (Development)
-```bash
-uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+The Progress page acts as the entry point to the learning platform.
+
+---
+
+# Main Website Pages
+
+| Page | Purpose |
+| --- | --- |
+| `index.html` | Home landing page with overview of SignBridge and quick navigation. |
+| `learn.html` | Learning hub that introduces alphabet practice, word learning, quizzes, and translation. |
+| `alphabet.html` | Alphabet training page for practicing individual letters and launching realtime recognition. |
+| `translate.html` | Real-time translator page for sign-to-text and text-to-sign features. |
+| `quiz.html` | Quiz system home page with interactive challenges, scoring, and progress tracking. |
+| `progress.html` | Progress dashboard that displays learning stats, achievements, and usage metrics. |
+| `signup.html` | User registration, login, email verification, and authentication interface. |
+
+---
+
+# Alphabet Recognition Pipeline
+
+Dataset folder:
+
+```
+asl_alphabet_train/
 ```
 
-The application will be available at: **http://127.0.0.1:8000/**
+Describe the complete workflow:
+
+Step 1:
+
+```
+python create_landmark_dataset.py
+```
+
+Step 2:
+
+```
+python train_landmarks.py
+```
+
+Step 3:
+
+```
+python realtime_landmarks.py
+```
+
+Explain what each script does.
+
+- `create_landmark_dataset.py` processes the alphabet dataset, extracts MediaPipe hand landmarks from images, normalizes positions, computes finger and thumb features, and exports a labeled landmark dataset.
+- `train_landmarks.py` trains the alphabet recognition model using the generated dataset, building a CNN+LSTM network and saving the trained model artifacts.
+- `realtime_landmarks.py` runs the realtime alphabet recognition demo using webcam capture, landmark extraction, and model inference.
 
 ---
 
-## 🌐 Website Pages
+# Word Recognition Pipeline
 
-### Home Page
-- **URL:** http://127.0.0.1:8000/index.html
-- Navigation hub connecting to all modules
+Dataset folder:
 
-### 🔤 Alphabet Learning
-- **URL:** http://127.0.0.1:8000/alphabet.html
-- Interactive alphabet trainer with sign recognition
-- Learn individual letters with visual feedback
+```
+dataset/
+```
 
-### 📚 Learn Module
-- **URL:** http://127.0.0.1:8000/learn.html
-- Structured learning content
-- Vocabulary building exercises
+Describe the workflow:
 
-### 🎮 Quiz System
-- **URL:** http://127.0.0.1:8000/quiz.html
-- Multiple quiz categories (alphabet, words, phrases)
-- Score tracking and performance metrics
+Step 1:
 
-### 🔄 Real-time Translation
-- **URL:** http://127.0.0.1:8000/translate.html
-- Live webcam-based sign translation
-- Real-time feedback and confidence scoring
+```
+python keypoints.py
+```
 
-### 📱 Progress Dashboard
-- **URL:** http://127.0.0.1:8000/progress.html
-- Visual learning statistics
-- Achievement badges and milestones
-- Performance analytics
+Step 2:
 
-### 🔐 Sign Up
-- **URL:** http://127.0.0.1:8000/signup.html
-- User registration and authentication
+```
+python train.py
+```
+
+Step 3:
+
+```
+python realtime.py
+```
+
+Explain what each script does.
+
+- `keypoints.py` extracts pose, hand, and facial keypoints from word dataset videos, centers the data relative to the shoulders, and saves processed sequences as `.npy` and `.csv` files.
+- `train.py` loads the keypoint sequences, augments data with sliding windows, trains a CNN+LSTM classifier, evaluates accuracy, and saves the resulting model.
+- `realtime.py` performs realtime word recognition from webcam input, using the trained model to predict word gestures live.
 
 ---
 
-## 🔄 Realtime Translation System
+# AI Recognition Workflow
 
-The real-time translation system represents the core of SignBridge's functionality:
+SignBridge's recognition pipeline includes:
 
-### Workflow
-1. **Video Capture** - Webcam stream acquisition
-2. **Landmark Detection** - MediaPipe extracts hand landmarks at 30 FPS
-3. **Feature Extraction** - Landmarks normalized and formatted
-4. **Model Inference** - TensorFlow/Keras model processes sequences
-5. **Prediction** - CNN-LSTM predicts sign class and confidence
-6. **Display** - Result rendered with confidence metrics
-
-### Features
-- Low-latency real-time processing
-- Confidence scoring for each prediction
-- Temporal smoothing to reduce flickering
-- Support for single letters and complete words
-- Real-time feedback loop
-
-### Performance
-- ~30 FPS processing speed
-- <50ms latency for predictions
-- Optimized for CPU and GPU execution
+- **OpenCV webcam capture** for live video streaming and frame processing.
+- **MediaPipe landmark extraction** to detect hand, pose, and face landmarks in real time.
+- **Feature preprocessing** to normalize landmarks, compute relative coordinates, and assemble model-ready sequences.
+- **TensorFlow inference** to run trained CNN+LSTM models on the preprocessed landmark sequences.
+- **Real-time prediction** to produce sign labels and confidence values instantly in the browser.
 
 ---
 
-## 🎮 Quiz System
+# Download Required Resources
 
-### Quiz Categories
-- **Alphabet Quiz** - Letter recognition and production
-- **Word Quiz** - Vocabulary comprehension
-- **Phrase Quiz** - Sentence understanding
-- **Sentence Construction** - Creating sentences from signs
+Large resources are intentionally excluded from public GitHub releases. Download the following assets from the shared link and place them into the repository as needed:
 
-### Features
-- Timed challenges
-- Multiple choice questions
-- Immediate feedback
-- Score calculation and tracking
-- Difficulty levels
-- Performance statistics
+- Alphabet Dataset
+- Word Dataset
+- Trained Models
+- Generated Keypoints
 
-### Scoring
-- Points awarded for correct answers
-- Bonus points for speed
-- Progressive difficulty scaling
+[ADD GOOGLE DRIVE LINK HERE]
 
 ---
 
-## 📊 Progress Tracking
+# Excluded Files
 
-### Metrics Tracked
-- Quiz completion count
-- Average quiz scores
-- Learning time spent
-- Modules completed
-- Vocabulary items learned
-- Accuracy improvements over time
+The following generated or sensitive files should be excluded from a public release and managed separately:
 
-### Dashboard Features
-- Visual progress charts
-- Achievement milestones
-- Performance trends
-- Learning statistics
-- Personalized recommendations
+- `asl_alphabet_train/`
+- `dataset/`
+- `*.npy`
+- `*.keras`
+- `*.h5`
+- `users.db`
+- `app.db`
+- `**/__pycache__/`
+- `*.log`
 
-### Data Storage
-- User progress stored in database
-- Historical data maintained
-- Export capabilities for analysis
+These files can be restored from the Google Drive link above.
 
 ---
 
-## 🔮 Future Improvements
+# Screenshots
 
-- 🌍 **Multilingual Support**
-  - Arabic Sign Language (ArSL)
-  - Chinese Sign Language (CSL)
-  - British Sign Language (BSL)
-  - Additional regional sign languages
-
-- 📱 **Mobile Applications**
-  - iOS native app
-  - Android native app
-  - Progressive Web App (PWA)
-  - Cross-platform compatibility
-
-- ☁️ **Cloud Deployment**
-  - AWS Lambda integration
-  - Docker containerization
-  - Kubernetes orchestration
-  - Scalable cloud infrastructure
-
-- 🔐 **Enhanced Authentication**
-  - OAuth2 integration
-  - Multi-factor authentication
-  - Social login support
-  - Admin dashboard
-
-- 🧠 **Advanced AI Capabilities**
-  - Sentence-level recognition
-  - Context-aware predictions
-  - Emotion detection
-  - Facial expression analysis
-
-- 🔌 **WebSocket Streaming**
-  - Real-time bidirectional communication
-  - Multiplayer learning sessions
-  - Live instructor feedback
-
-- 📈 **Advanced Analytics**
-  - Machine learning-based recommendations
-  - Personalized learning paths
-  - Spaced repetition optimization
-  - Learning pattern analysis
-
-- 🎓 **Gamification Enhancements**
-  - Leaderboards
-  - Achievements and badges
-  - Multiplayer competitions
-  - Social features
+```
+![Home](docs/images/home.png)
+![Learning](docs/images/learn.png)
+![Alphabet](docs/images/alphabet.png)
+![Quiz](docs/images/quiz.png)
+![Translation](docs/images/translation.png)
+![Progress](docs/images/progress.png)
+```
 
 ---
 
-## 📝 Notes
+# Demo Video
 
-- Ensure your webcam is accessible and has proper permissions
-- The application requires an internet connection for initial setup
-- GPU acceleration recommended for improved performance
-- Models are pre-trained; no additional training required for basic usage
-- Frame rate depends on system performance and video quality
-- Lighting conditions affect recognition accuracy
+```
+![Demo](docs/images/signbridge-demo.gif)
+```
 
----
-
-## 👨‍💻 Author
-
-**SignBridge Development Team**
-
-A collaborative project dedicated to making sign language learning accessible through innovative AI technology.
+```
+[Watch Demo Video](ADD_VIDEO_LINK_HERE)
+```
 
 ---
 
-## 📄 License
+# Dependencies
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+SignBridge depends on the following Python libraries listed in `requirements.txt`:
+
+- `numpy`
+- `tensorflow` / `tensorflow-intel`
+- `mediapipe`
+- `opencv-contrib-python`
+- `scikit-learn`
+- `pandas`
+- `matplotlib`
+- `pillow`
+- `fastapi`
+- `uvicorn`
+- `python-multipart`
+- `SQLAlchemy`
+- `passlib[bcrypt]`
+- `python-jose[cryptography]`
+- `email-validator`
+- `pyttsx3`
 
 ---
 
-## 🤝 Contributing
+# Future Improvements
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📧 Support
-
-For support, please open an issue on the GitHub repository or contact the development team.
+- Add multilingual sign language support and regional datasets.
+- Build native Android/iOS apps and a Progressive Web App (PWA).
+- Add WebSocket-powered real-time streaming for lower latency.
+- Improve the translation engine with sentence-level and context-aware prediction.
+- Add gamification, leaderboards, and collaborative learning features.
+- Containerize the app with Docker and add cloud deployment support.
 
 ---
 
-**Made with ❤️ for the Sign Language Community**
+# Authors
+
+SignBridge Development Team
+
+---
+
+# License
+
+Educational and research purposes.
